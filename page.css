@@ -1,0 +1,123 @@
+.carrusel-container {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.carrusel-container1 {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+.carrusel-container2 {
+  gap: var(--dl-space-space-sixunits);
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  padding: 7rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.carrusel-image {
+  width: 100px;
+  object-fit: cover;
+}
+.carrusel-image1 {
+  width: 100px;
+  object-fit: cover;
+}
+.carrusel-image2 {
+  width: 100px;
+  object-fit: cover;
+}
+.carrusel-container3 {
+  top: 0px;
+  flex: 0 0 auto;
+  left: 0px;
+  width: var(--dl-size-size-small);
+  bottom: 0px;
+  margin: auto;
+  display: flex;
+  padding: var(--dl-space-space-unit);
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.carrusel-icon {
+  width: 24px;
+  height: 24px;
+}
+.carrusel-container4 {
+  top: 0px;
+  flex: 0 0 auto;
+  right: 0px;
+  width: var(--dl-size-size-small);
+  bottom: 0px;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.carrusel-icon2 {
+  width: 24px;
+  height: 24px;
+}
+.carrusel-form {
+  width: 200px;
+  height: 100px;
+  display: flex;
+}
+
+
+.carrusel-root-class-name2 {
+  background-color: #ffffff;
+}
+@media(max-width: 1200px) {
+  .carrusel-container1 {
+    width: 100%;
+    height: 350px;
+    padding: 3rem;
+    position: relative;
+  }
+  .carrusel-container2 {
+    gap: 5rem;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}
+@media(max-width: 767px) {
+  .carrusel-container1 {
+    background-color: #ffffff;
+  }
+  .carrusel-container2 {
+    background-color: transparent;
+  }
+  .carrusel-container3 {
+    height: 350px;
+    background-image: linear-gradient(90deg, rgb(189, 195, 199) 0.00%,rgba(26, 26, 26, 0.31) 100.00%);
+  }
+  .carrusel-container4 {
+    background-image: linear-gradient(270deg, rgb(189, 195, 199) 0.00%,rgba(26, 26, 26, 0.31) 100.00%);
+  }
+}
+
+.page-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+}

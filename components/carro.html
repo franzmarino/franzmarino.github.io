@@ -1,0 +1,262 @@
+<div>
+  <script
+    type="text/javascript"
+    src="https://unpkg.com/dangerous-html@0.1.11/dist/default/lib.umd.js"
+  ></script>
+  <link href="./carro.css" rel="stylesheet" />
+  <div class="carro-container">
+    <div class="carro-code-embed">
+      <dangerous-html
+        html="<div class='choose-avatar'>
+  <span class='title'>Choose your avatar</span>
+  <div class='avatars-container'>
+    <span class='left'></span>
+    <div class='avatars'>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/C2WLdyY/avatar1.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/0t3JTMz/avatar2.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/K08BjJx/avatar3.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/6XW1X2L/avatar4.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/DVfTxB2/avatar5.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/Bzvqgg3/avatar6.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+      <div
+        class='avatar-item'
+        style='background-image: url('https://i.ibb.co/FDg3t8m/avatar7.png');'
+      >
+        <span id='text-avatar'>Choose</span>
+      </div>
+    </div>
+    <span class='right'></span>
+  </div>
+  <button class='button-simple'>Back</button>
+</div>
+
+<script>
+      /*
+    Available on YouTube : https://www.youtube.com/watch?v=j_RWXhVA_Q4
+  */
+
+  window.onload = () => {
+    const prev = document.querySelector('.left')
+    const next = document.querySelector('.right')
+    const container = document.querySelector('.avatars')
+    const avatars = document.querySelectorAll('.avatars-container .avatar-item')
+    let currentIndex = Math.floor(avatars.length/2)
+    const val = (avatars.length - 1 - Math.floor(avatars.length/2)) * 195
+    let translateVal = 0
+
+    for (let i = 0; i < avatars.length; i++) {
+      if (i === Math.floor(avatars.length/2)) {
+        avatars[i].classList.add('current')
+      }
+      avatars[i].addEventListener('click', () => {
+        window.open('https://www.youtube.com/watch?v=j_RWXhVA_Q4', '_blank');
+      })
+    }
+
+    let defaultVal = 0
+    if (avatars.length % 2 === 0) {
+      defaultVal = 90
+      translateVal -= 90
+      container.style.transform = `translateX(${translateVal}px)`
+    }
+
+
+    prev.addEventListener('click', () => {
+      if (currentIndex - 1 < 0) {
+        avatars[currentIndex].classList.remove('current')
+        avatars[avatars.length - 1].classList.add('current')
+        currentIndex = avatars.length - 1
+        translateVal = -val - defaultVal
+        container.style.transform = `translateX(${translateVal}px)`
+      } else {
+        avatars[currentIndex].classList.remove('current')
+        avatars[currentIndex - 1].classList.add('current')
+        currentIndex -= 1
+        translateVal += 195
+        container.style.transform = `translateX(${translateVal}px)`
+      }
+    })
+
+    next.addEventListener('click', () => {
+      if (currentIndex + 1 >= avatars.length) {
+        avatars[currentIndex].classList.remove('current')
+        avatars[0].classList.add('current')
+        currentIndex = 0
+        translateVal = val + defaultVal
+        container.style.transform = `translateX(${translateVal}px)`
+        return
+      }
+      avatars[currentIndex].classList.remove('current')
+      avatars[currentIndex + 1].classList.add('current')
+      currentIndex += 1
+      translateVal -= 195
+      container.style.transform = `translateX(${translateVal}px)`
+    })
+
+  }
+</script>
+
+<style>
+    .choose-avatar {
+    position: fixed;
+    background: var(--black);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .avatar-item {
+    width: 145px;
+    height: 145px;
+    background-size: cover;
+    border-radius: 55px;
+    transition: transform 500ms;
+    transition-timing-function: cubic-bezier(0.22, 0.11, 0.67, 0.55);
+  }
+
+  .avatars-container {
+    display: flex;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    position: relative;
+    gap: 50px;
+  }
+
+  .avatars-container::before {
+    content: '<';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 35px;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    display: flex;
+    box-shadow: 0px 0px 50px 60px var(--black);
+    background: var(--black);
+  }
+
+  .avatars-container::after {
+    content: '>';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-size: 35px;
+    right: 0;
+    top: 0;
+    display: flex;
+    box-shadow: 0px 0px 50px 60px var(--black);
+    background: var(--black);
+  }
+
+  .avatars {
+    position: relative;
+    display: flex;
+    gap: 50px;
+    transition: transform 500ms;
+  }
+
+  #text-avatar {
+    display: none;
+  }
+
+  .button-simple {
+    padding: 20px 70px;
+    border-radius: 16px;
+    font-size: 20px;
+    background-color: var(--green);
+    border: none;
+    font-weight: 700;
+    transition: .3s;
+  }
+
+  .button-simple:hover {
+    cursor: pointer;
+    opacity: .8;
+  }
+
+  .left {
+    position: absolute;
+    left: 0;
+    width: 35px;
+    height: 50px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .right {
+    position: absolute;
+    right: 0;
+    width: 35px;
+    height: 50px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .current {
+    transform: scale(1.3);
+  }
+
+  .current:hover #text-avatar {
+    display: block;
+  }
+
+  .current:hover {
+    cursor: pointer;
+    background-blend-mode: overlay;
+    background-color: #0d111f89;
+    place-items: center;
+    display: grid;
+  }
+</style>
+"
+      ></dangerous-html>
+    </div>
+  </div>
+</div>
